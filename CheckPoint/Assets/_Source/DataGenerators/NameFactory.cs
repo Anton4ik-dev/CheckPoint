@@ -10,17 +10,17 @@ namespace DataFactories
         private const string NAMES_DATABASE = "\\Names.csv";
         private const string LASTNAMES_DATABASE = "\\LastNames.csv";
         private const string SPLIT = ", ";
-        private Dictionary<string, List<string>> _names = new Dictionary<string, List<string>>
+        private Dictionary<int, List<string>> _names = new Dictionary<int, List<string>>
         {
-            {"Приставки", new List<string>() },
-            {"Корни", new List<string>() },
-            {"Окончания", new List<string>() }
+            {NameId.BEFORE_NAME, new List<string>() },
+            {NameId.CORE_NAME, new List<string>() },
+            {NameId.AFTER_NAME, new List<string>() }
         };
-        private Dictionary<string, List<string>> _lastNames = new Dictionary<string, List<string>>
+        private Dictionary<int, List<string>> _lastNames = new Dictionary<int, List<string>>
         {
-            {"Приставки", new List<string>() },
-            {"Корни", new List<string>() },
-            {"Окончания", new List<string>() }
+            {NameId.BEFORE_NAME, new List<string>() },
+            {NameId.CORE_NAME, new List<string>() },
+            {NameId.AFTER_NAME, new List<string>() }
         };
 
         public NameFactory(SQLDataLoader sqlDataLoader)
@@ -43,5 +43,12 @@ namespace DataFactories
             }
             return name + SPLIT + lastName;
         }
+    }
+
+    public static class NameId
+    {
+        public static int BEFORE_NAME = 0;
+        public static int CORE_NAME = 1;
+        public static int AFTER_NAME = 2;
     }
 }

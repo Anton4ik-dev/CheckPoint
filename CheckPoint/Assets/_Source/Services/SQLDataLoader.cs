@@ -7,7 +7,7 @@ namespace Services
 {
     public class SQLDataLoader
     {
-        public void LoadStringData(string tableName, Dictionary<string, List<string>> dataBase)
+        public void LoadStringData<T>(string tableName, Dictionary<T, List<string>> dataBase)
         {
             List<List<string>> dataLoaded = File.ReadAllLines(Application.persistentDataPath + tableName)
                 .Select(v => v.Split(',', '\"').ToList())

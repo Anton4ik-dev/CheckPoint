@@ -20,7 +20,7 @@ namespace DataFactories
             _dateFactory = dateFactory;
         }
 
-        public void CreateData(bool isError = false)
+        public void CreateData(bool isError)
         {
             _passportTemplate.Name = _nameFactory.CreateName();
             _passportTemplate.Country = _cityFactory.CreateCountry();

@@ -1,3 +1,4 @@
+using ScriptableObjects;
 using System.Collections.Generic;
 using Templates;
 using UnityEngine;
@@ -21,19 +22,15 @@ namespace DataFactories
         public PhotoFactory(
             [Inject(Id = BindId.PASSPORT_ID)] PhotoTemplate passportPhotoTemplate,
             [Inject(Id = BindId.GUEST_ID)] PhotoTemplate guestPhotoTemplate,
-            [Inject(Id = BindId.FACE_ID)] List<Sprite> faceSprites,
-            [Inject(Id = BindId.GLASSES_ID)] List<Sprite> glassesSprites,
-            [Inject(Id = BindId.HAIRCUT_ID)] List<Sprite> haircutSprites,
-            [Inject(Id = BindId.MOUTH_ID)] List<Sprite> mouthSprites,
-            [Inject(Id = BindId.BEARD_ID)] List<Sprite> beardSprites)
+            PhotoHolderSO photoHolderSo)
         {
             _passportPhotoTemplate = passportPhotoTemplate;
             _guestPhotoTemplate = guestPhotoTemplate;
-            _faceSprites = faceSprites;
-            _glassesSprites = glassesSprites;
-            _haircutSprites = haircutSprites;
-            _mouthSprites = mouthSprites;
-            _beardSprites = beardSprites;
+            _faceSprites = photoHolderSo.FaceSprites;
+            _glassesSprites = photoHolderSo.GlassesSprites;
+            _haircutSprites = photoHolderSo.HaircutSprites;
+            _mouthSprites = photoHolderSo.MouthSprites;
+            _beardSprites = photoHolderSo.BeardSprites;
         }
 
         public string CreateSex(bool isError = false)
