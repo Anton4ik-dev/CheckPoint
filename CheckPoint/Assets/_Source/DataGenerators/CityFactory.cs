@@ -1,6 +1,7 @@
 using Services;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace DataFactories
@@ -20,9 +21,10 @@ namespace DataFactories
         };
         private string _country;
 
-        public CityFactory(SQLDataLoader sqlDataLoader)
+        public CityFactory(SQLDataLoader sqlDataLoader, TextMeshProUGUI book)
         {
             sqlDataLoader.LoadStringData(COUNTRIES_DATABASE, _countries);
+            book.text = RightBook();
         }
 
         public string CreateCountry()
@@ -42,6 +44,21 @@ namespace DataFactories
             }
             else
                 return _countries[_country][Random.Range(0, _countries[_country].Count)];
+        }
+
+        private string RightBook()
+        {
+            string bookInfo = "";
+            for (int i = 0; i < _countries.Count; i++)
+            {
+                bookInfo += _countries.ElementAt(i).Key + " - ";
+                for (int j = 0; j < _countries.ElementAt(i).Value.Count; j++)
+                {
+                    bookInfo += _countries.ElementAt(i).Value[j] + " ";
+                }
+                bookInfo += "\n";
+            }
+            return bookInfo;
         }
     }
 

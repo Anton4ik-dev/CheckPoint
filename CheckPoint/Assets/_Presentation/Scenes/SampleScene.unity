@@ -496,6 +496,7 @@ MonoBehaviour:
   _passportPhotoTemplate: {fileID: 683504621}
   _guestPhotoTemplate: {fileID: 8480898974146971200}
   _photoHolderSo: {fileID: 11400000, guid: dd40a2fb7ab4ff442aa692240a3effe8, type: 2}
+  _book: {fileID: 1197895063}
   _howMuchYears: 20
 --- !u!114 &683504621 stripped
 MonoBehaviour:
@@ -610,6 +611,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1197895063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1197895063, guid: c2252aa28d8a5dc4eb60edbbfafdb7b4, type: 3}
+  m_PrefabInstance: {fileID: 6657606082751854936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1516567859 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2355018413980924616, guid: e41105ccfac1542479e1833799bfac8c, type: 3}
@@ -888,6 +900,18 @@ PrefabInstance:
     - target: {fileID: 2355018413980924617, guid: e41105ccfac1542479e1833799bfac8c, type: 3}
       propertyPath: m_Name
       value: Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957708161974153, guid: e41105ccfac1542479e1833799bfac8c, type: 3}
+      propertyPath: m_Size.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957708161974153, guid: e41105ccfac1542479e1833799bfac8c, type: 3}
+      propertyPath: m_Size.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957708161974153, guid: e41105ccfac1542479e1833799bfac8c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41105ccfac1542479e1833799bfac8c, type: 3}

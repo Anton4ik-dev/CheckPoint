@@ -8,23 +8,16 @@ namespace Draggables
     public abstract class ADraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] protected LayerMask _triggerLayer;
-        protected bool _isDragging;
         protected LayerService _layerService;
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            _isDragging = true;
-        }
+        public virtual void OnBeginDrag(PointerEventData eventData) { }
 
-        public void OnDrag(PointerEventData eventData)
+        public virtual void OnDrag(PointerEventData eventData)
         {
             transform.position = Input.mousePosition;
         }
 
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            _isDragging = false;
-        }
+        public virtual void OnEndDrag(PointerEventData eventData) { }
 
         [Inject]
         public void Construct(LayerService layerService)

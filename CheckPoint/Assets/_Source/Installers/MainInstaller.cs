@@ -3,6 +3,7 @@ using Guest;
 using ScriptableObjects;
 using Services;
 using Templates;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,7 @@ public class MainInstaller : MonoInstaller
     [SerializeField] private PhotoTemplate _passportPhotoTemplate;
     [SerializeField] private PhotoTemplate _guestPhotoTemplate;
     [SerializeField] private PhotoHolderSO _photoHolderSo;
+    [SerializeField] private TextMeshProUGUI _book;
     [SerializeField] private int _howMuchYears;
 
     public override void InstallBindings()
@@ -26,6 +28,7 @@ public class MainInstaller : MonoInstaller
         Container.Bind<SQLDataLoader>().AsSingle().NonLazy();
         Container.Bind<LayerService>().AsSingle().NonLazy();
 
+        Container.Bind<TextMeshProUGUI>().FromInstance(_book).AsSingle();
         Container.Bind<PhotoHolderSO>().FromInstance(_photoHolderSo).AsSingle();
         Container.Bind<PassportTemplate>().FromInstance(_passportTemplate).AsSingle();
         Container.Bind<PhotoTemplate>().WithId(BindId.PASSPORT_ID).FromInstance(_passportPhotoTemplate);

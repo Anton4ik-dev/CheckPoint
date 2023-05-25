@@ -1,20 +1,37 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Draggables
 {
-    public class MarkTrigger : ADraggable
+    public class MarkTrigger : ADraggable, IPointerDownHandler
     {
         [SerializeField] private bool _isRight;
+        private PassportTrigger _passportTrigger;
 
-        private void OnTriggerStay2D(Collider2D collision)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            if (_layerService.CheckLayersEquality(collision.gameObject.layer, _triggerLayer) && !_isDragging)
+            if(_passportTrigger != null)
+            {
+                _passportTrigger.IsMarked = true;
+                _passportTrigger.IsRight = _isRight;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (_layerService.CheckLayersEquality(collision.gameObject.layer, _triggerLayer))
             {
                 if (collision.TryGetComponent(out PassportTrigger passportTrigger))
-                {
-                    passportTrigger.IsMarked = true;
-                    passportTrigger.IsRight = _isRight;
-                }
+                    _passportTrigger = passportTrigger;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (_layerService.CheckLayersEquality(collision.gameObject.layer, _triggerLayer))
+            {
+                if (collision.TryGetComponent(out PassportTrigger passportTrigger))
+                    _passportTrigger = null;
             }
         }
     }

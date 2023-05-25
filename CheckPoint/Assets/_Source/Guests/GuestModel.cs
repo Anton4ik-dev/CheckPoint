@@ -36,7 +36,7 @@ namespace Guest
 
         private bool CheckExit(bool playerResult)
         {
-            return playerResult == _isFake;
+            return playerResult == !_isFake;
         }
 
         private void CreateRight()
