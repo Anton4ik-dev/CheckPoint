@@ -13,12 +13,22 @@ MonoBehaviour:
   m_Name: PhotoHolderSO
   m_EditorClassIdentifier: 
   _faceSprites:
-  - {fileID: 21300000, guid: e7ddb9213511d984f8b951a7c913d83a, type: 3}
+  - {fileID: 21300000, guid: 28c58b21cca822f42bf5f654690173eb, type: 3}
+  - {fileID: 21300000, guid: 5389230a8fdbe04449c5daf2392ce701, type: 3}
+  - {fileID: 21300000, guid: 3243ec2e63f2acb41b77e765eb456db8, type: 3}
   _glassesSprites:
-  - {fileID: 21300000, guid: 62ce01ddca719d34ea9648c586a7cc94, type: 3}
+  - {fileID: 21300000, guid: eea606eedb3921c458545a66ce602c96, type: 3}
+  - {fileID: 21300000, guid: d1e663e301b86884a89df7a13da24be0, type: 3}
+  - {fileID: 21300000, guid: e31bd8d722743214c98661146ce7c241, type: 3}
   _haircutSprites:
-  - {fileID: 21300000, guid: d4d64a6cd9624c34a815dd79fb2a20a4, type: 3}
+  - {fileID: 21300000, guid: d8a66b6bea3d0bb4d8267199bcde48c4, type: 3}
+  - {fileID: 21300000, guid: 7efac0bdc8f2ee546af4fd49656afd13, type: 3}
+  - {fileID: 21300000, guid: 4405ec1730d08c541b7612e2ed4683d8, type: 3}
   _mouthSprites:
-  - {fileID: 21300000, guid: 1af9d2e44ecf3a2468601c9071df581f, type: 3}
+  - {fileID: 21300000, guid: 04f2d36b17cfafc4f9e9f7f1bb5f5c87, type: 3}
+  - {fileID: 21300000, guid: b3579df9c7c06ba4a96e49ab660bd2fd, type: 3}
+  - {fileID: 21300000, guid: 16a17617f0a9dc34f9a319f0ccc05f3a, type: 3}
   _beardSprites:
-  - {fileID: 21300000, guid: 42f4b048501996743958df91513f824a, type: 3}
+  - {fileID: 21300000, guid: eddb69fb84dd17747a4b461cfaa90bc3, type: 3}
+  - {fileID: 21300000, guid: a03d4c6b48d66f24bbc430ea7ebcfa0f, type: 3}
+  - {fileID: 21300000, guid: 99192d9d35001fe4183f8a593b5d043c, type: 3}

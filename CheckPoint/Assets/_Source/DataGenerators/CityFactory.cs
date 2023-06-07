@@ -25,7 +25,7 @@ namespace DataFactories
         public CityFactory(SQLDataLoader sqlDataLoader, [Inject(Id = BindId.PASSPORT_ID)] TextMeshProUGUI book)
         {
             sqlDataLoader.LoadStringData(COUNTRIES_DATABASE, _countries);
-            book.text = RightBook();
+            book.text = WriteBook();
         }
 
         public string CreateCountry()
@@ -47,7 +47,7 @@ namespace DataFactories
                 return _countries[_country][Random.Range(0, _countries[_country].Count)];
         }
 
-        private string RightBook()
+        private string WriteBook()
         {
             string bookInfo = "";
             for (int i = 0; i < _countries.Count; i++)

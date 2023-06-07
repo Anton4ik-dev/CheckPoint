@@ -41,7 +41,7 @@ namespace Guest
 
         private void CreateRight()
         {
-            if (_repeatingRight < 4)
+            if (_repeatingRight < 3)
             {
                 _repeatingRight++;
                 _isFake = false;
@@ -54,7 +54,7 @@ namespace Guest
 
         private void CreateFake()
         {
-            if (_repeatingFake < 4)
+            if (_repeatingFake < 3)
             {
                 _repeatingFake++;
                 _isFake = true;

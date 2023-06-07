@@ -9,16 +9,6 @@ namespace Draggables
         [SerializeField] private Color _markColor;
         private PassportTrigger _passportTrigger;
 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if(_passportTrigger != null)
-            {
-                _passportTrigger.IsMarked = true;
-                _passportTrigger.MarkPoint.color = _markColor;
-                _passportTrigger.IsRight = _isRight;
-            }
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (_layerService.CheckLayersEquality(collision.gameObject.layer, _triggerLayer))
@@ -34,6 +24,17 @@ namespace Draggables
             {
                 if (collision.TryGetComponent(out PassportTrigger passportTrigger))
                     _passportTrigger = null;
+            }
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (_passportTrigger != null)
+            {
+                _passportTrigger.IsMarked = true;
+                _passportTrigger.MarkPoint.color = _markColor;
+                _passportTrigger.IsRight = _isRight;
+                _soundService.PlayClip(_soundService.Sounds.MarkClip);
             }
         }
     }

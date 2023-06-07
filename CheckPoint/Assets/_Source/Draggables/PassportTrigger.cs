@@ -37,6 +37,10 @@ namespace Draggables
             {
                 IsMarked = false;
                 _markPoint.color = _markPoint.defaultMaterial.color;
+                if(IsRight)
+                    _soundService.PlayClip(_soundService.Sounds.RightClip);
+                else
+                    _soundService.PlayClip(_soundService.Sounds.FalseClip);
                 _guestView.ExitGuest(IsRight);
             }
         }

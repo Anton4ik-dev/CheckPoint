@@ -9,6 +9,7 @@ namespace Draggables
     {
         [SerializeField] protected LayerMask _triggerLayer;
         protected LayerService _layerService;
+        protected SoundService _soundService;
 
         public virtual void OnBeginDrag(PointerEventData eventData) { }
 
@@ -20,9 +21,10 @@ namespace Draggables
         public virtual void OnEndDrag(PointerEventData eventData) { }
 
         [Inject]
-        public void Construct(LayerService layerService)
+        public void Construct(LayerService layerService, SoundService soundService)
         {
             _layerService = layerService;
+            _soundService = soundService;
         }
     }
 }

@@ -1,6 +1,7 @@
 using ScriptableObjects;
 using System.Collections.Generic;
 using Templates;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,8 @@ namespace DataFactories
     {
         private const string MALE = "Мужской";
         private const string FEMALE = "Женский";
+        private const string MALE_MESSAGE = "Я мужчина";
+        private const string FEMALE_MESSAGE = "Я женщина";
         private bool _sex;
         private PhotoTemplate _passportPhotoTemplate;
         private PhotoTemplate _guestPhotoTemplate;
@@ -18,11 +21,12 @@ namespace DataFactories
         private List<Sprite> _haircutSprites;
         private List<Sprite> _mouthSprites;
         private List<Sprite> _beardSprites;
+        private TextMeshProUGUI _guestSexMessage;
 
         public PhotoFactory(
             [Inject(Id = BindId.PASSPORT_ID)] PhotoTemplate passportPhotoTemplate,
             [Inject(Id = BindId.GUEST_ID)] PhotoTemplate guestPhotoTemplate,
-            PhotoHolderSO photoHolderSo)
+            PhotoHolderSO photoHolderSo, [Inject(Id = BindId.SEX_ID)] TextMeshProUGUI guestSexMessage)
         {
             _passportPhotoTemplate = passportPhotoTemplate;
             _guestPhotoTemplate = guestPhotoTemplate;
@@ -31,6 +35,7 @@ namespace DataFactories
             _haircutSprites = photoHolderSo.HaircutSprites;
             _mouthSprites = photoHolderSo.MouthSprites;
             _beardSprites = photoHolderSo.BeardSprites;
+            _guestSexMessage = guestSexMessage;
         }
 
         public string CreateSex(bool isError = false)
@@ -40,9 +45,15 @@ namespace DataFactories
             else
             {
                 if (Random.Range(0, 2) == 0)
+                {
                     _sex = true;
+                    _guestSexMessage.text = MALE_MESSAGE;
+                }
                 else
+                {
                     _sex = false;
+                    _guestSexMessage.text = FEMALE_MESSAGE;
+                }
             }
 
             if (_sex)

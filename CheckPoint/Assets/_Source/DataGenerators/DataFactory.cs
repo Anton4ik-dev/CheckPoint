@@ -41,6 +41,9 @@ namespace DataFactories
                     case 2:
                         _passportTemplate.Sex = _photoFactory.CreateSex(isError);
                         break;
+                    case 3:
+                        _photoFactory.CreatePhoto(isError);
+                        break;
                 }
             }
         }
