@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace DataFactories
 {
@@ -21,7 +22,7 @@ namespace DataFactories
         };
         private string _country;
 
-        public CityFactory(SQLDataLoader sqlDataLoader, TextMeshProUGUI book)
+        public CityFactory(SQLDataLoader sqlDataLoader, [Inject(Id = BindId.PASSPORT_ID)] TextMeshProUGUI book)
         {
             sqlDataLoader.LoadStringData(COUNTRIES_DATABASE, _countries);
             book.text = RightBook();
@@ -54,7 +55,9 @@ namespace DataFactories
                 bookInfo += _countries.ElementAt(i).Key + " - ";
                 for (int j = 0; j < _countries.ElementAt(i).Value.Count; j++)
                 {
-                    bookInfo += _countries.ElementAt(i).Value[j] + " ";
+                    bookInfo += _countries.ElementAt(i).Value[j];
+                    if (j != _countries.ElementAt(i).Value.Count - 1)
+                        bookInfo += ", ";
                 }
                 bookInfo += "\n";
             }

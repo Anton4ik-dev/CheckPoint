@@ -1,13 +1,16 @@
 using Guest;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Draggables
 {
     public class PassportTrigger : ADraggable
     {
+        [SerializeField] private Image _markPoint;
         public bool IsRight { get; set; }
         public bool IsMarked { get; set; }
+        public Image MarkPoint { get => _markPoint; private set { } }
         private GuestView _guestView;
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +36,7 @@ namespace Draggables
             if(_guestView != null && IsMarked)
             {
                 IsMarked = false;
+                _markPoint.color = _markPoint.defaultMaterial.color;
                 _guestView.ExitGuest(IsRight);
             }
         }

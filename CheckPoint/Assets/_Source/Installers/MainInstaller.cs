@@ -14,6 +14,7 @@ public class MainInstaller : MonoInstaller
     [SerializeField] private PhotoTemplate _guestPhotoTemplate;
     [SerializeField] private PhotoHolderSO _photoHolderSo;
     [SerializeField] private TextMeshProUGUI _book;
+    [SerializeField] private TextMeshProUGUI _clocks;
     [SerializeField] private int _howMuchYears;
 
     public override void InstallBindings()
@@ -28,12 +29,13 @@ public class MainInstaller : MonoInstaller
         Container.Bind<SQLDataLoader>().AsSingle().NonLazy();
         Container.Bind<LayerService>().AsSingle().NonLazy();
 
-        Container.Bind<TextMeshProUGUI>().FromInstance(_book).AsSingle();
+        Container.Bind<TextMeshProUGUI>().WithId(BindId.PASSPORT_ID).FromInstance(_book);
+        Container.Bind<TextMeshProUGUI>().WithId(BindId.GUEST_ID).FromInstance(_clocks);
+
         Container.Bind<PhotoHolderSO>().FromInstance(_photoHolderSo).AsSingle();
         Container.Bind<PassportTemplate>().FromInstance(_passportTemplate).AsSingle();
         Container.Bind<PhotoTemplate>().WithId(BindId.PASSPORT_ID).FromInstance(_passportPhotoTemplate);
         Container.Bind<PhotoTemplate>().WithId(BindId.GUEST_ID).FromInstance(_guestPhotoTemplate);
-
 
         Container.Bind<int>().FromInstance(_howMuchYears);
     }

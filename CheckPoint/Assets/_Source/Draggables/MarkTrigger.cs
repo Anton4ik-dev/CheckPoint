@@ -6,6 +6,7 @@ namespace Draggables
     public class MarkTrigger : ADraggable, IPointerDownHandler
     {
         [SerializeField] private bool _isRight;
+        [SerializeField] private Color _markColor;
         private PassportTrigger _passportTrigger;
 
         public void OnPointerDown(PointerEventData eventData)
@@ -13,6 +14,7 @@ namespace Draggables
             if(_passportTrigger != null)
             {
                 _passportTrigger.IsMarked = true;
+                _passportTrigger.MarkPoint.color = _markColor;
                 _passportTrigger.IsRight = _isRight;
             }
         }

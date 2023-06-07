@@ -1,4 +1,6 @@
 using System;
+using TMPro;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace DataFactories
@@ -8,9 +10,10 @@ namespace DataFactories
         private const int ONE_YEAR = 365;
         private int _dateRange;
 
-        public DateFactory(int howMuchYears)
+        public DateFactory(int howMuchYears, [Inject(Id = BindId.GUEST_ID)] TextMeshProUGUI clocks)
         {
             _dateRange = howMuchYears * ONE_YEAR;
+            clocks.text = $"{DateTime.Today.Day}.{DateTime.Today.Month}.{DateTime.Today.Year}";
         }
 
         public string CreateDate(bool isError = false)
