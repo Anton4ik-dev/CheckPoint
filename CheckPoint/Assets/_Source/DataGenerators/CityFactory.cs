@@ -9,7 +9,6 @@ namespace DataFactories
 {
     public class CityFactory
     {
-        private const string COUNTRIES_DATABASE = "\\Countries.csv";
         private Dictionary<string, List<string>> _countries = new Dictionary<string, List<string>>
         {
             {Countries.ARCTOZKA, new List<string>() },
@@ -22,9 +21,11 @@ namespace DataFactories
         };
         private string _country;
 
-        public CityFactory(SQLDataLoader sqlDataLoader, [Inject(Id = BindId.PASSPORT_ID)] TextMeshProUGUI book)
+        public CityFactory(SQLDataLoader sqlDataLoader,
+            [Inject(Id = BindId.PASSPORT_ID)] TextMeshProUGUI book,
+            [Inject(Id = BindId.COUNTRIES_ID)] TextAsset countries)
         {
-            sqlDataLoader.LoadStringData(COUNTRIES_DATABASE, _countries);
+            sqlDataLoader.LoadStringData(countries, _countries);
             book.text = WriteBook();
         }
 

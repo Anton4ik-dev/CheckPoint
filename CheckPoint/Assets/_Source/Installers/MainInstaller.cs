@@ -20,6 +20,10 @@ public class MainInstaller : MonoInstaller
     [SerializeField] private TextMeshProUGUI _guestSexMessage;
     [SerializeField] private int _howMuchYears;
 
+    [SerializeField] private TextAsset _names;
+    [SerializeField] private TextAsset _surnames;
+    [SerializeField] private TextAsset _countries;
+
     public override void InstallBindings()
     {
         Container.Bind<DataFactory>().AsSingle().NonLazy();
@@ -32,6 +36,10 @@ public class MainInstaller : MonoInstaller
         Container.Bind<SQLDataLoader>().AsSingle().NonLazy();
         Container.Bind<LayerService>().AsSingle().NonLazy();
         Container.Bind<SoundService>().AsSingle().NonLazy();
+
+        Container.Bind<TextAsset>().WithId(BindId.NAMES_ID).FromInstance(_names);
+        Container.Bind<TextAsset>().WithId(BindId.SURNAMES_ID).FromInstance(_surnames);
+        Container.Bind<TextAsset>().WithId(BindId.COUNTRIES_ID).FromInstance(_countries);
 
         Container.Bind<TextMeshProUGUI>().WithId(BindId.PASSPORT_ID).FromInstance(_book);
         Container.Bind<TextMeshProUGUI>().WithId(BindId.GUEST_ID).FromInstance(_clocks);
@@ -55,4 +63,7 @@ public static class BindId
     public const int GUEST_ID = 0;
     public const int PASSPORT_ID = 1;
     public const int SEX_ID = 2;
+    public const int COUNTRIES_ID = 3;
+    public const int NAMES_ID = 4;
+    public const int SURNAMES_ID = 5;
 }

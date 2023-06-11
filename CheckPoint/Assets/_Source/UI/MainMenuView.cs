@@ -1,13 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
 {
     public class MainMenuView : MonoBehaviour
     {
-        [SerializeField] private Button firstLevelButton;
-        [SerializeField] private int firstLevelId;
+        [SerializeField] private Button gameButton;
+        [SerializeField] private GameObject gamePanel;
+        [SerializeField] private UISwitcher uISwitcher;
 
         private void Start()
         {
@@ -16,7 +16,7 @@ namespace UI
 
         private void Bind()
         {
-            firstLevelButton.onClick.AddListener(() => SceneManager.LoadScene(firstLevelId));
+            gameButton.onClick.AddListener(() => uISwitcher.TurnOnPanel(gamePanel));
         }
     }
 }

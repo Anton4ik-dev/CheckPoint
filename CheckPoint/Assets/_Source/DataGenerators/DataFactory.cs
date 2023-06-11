@@ -11,7 +11,9 @@ namespace DataFactories
         private NameFactory _nameFactory;
         private DateFactory _dateFactory;
 
-        public DataFactory(PassportTemplate passportTemplate, PhotoFactory photoFactory, CityFactory cityFactory, NameFactory nameFactory, DateFactory dateFactory)
+        public DataFactory(PassportTemplate passportTemplate,
+            PhotoFactory photoFactory, CityFactory cityFactory,
+            NameFactory nameFactory, DateFactory dateFactory)
         {
             _passportTemplate = passportTemplate;
             _photoFactory = photoFactory;

@@ -5,12 +5,24 @@ using UnityEngine;
 
 namespace Services
 {
+    [System.Serializable]
+    public class StringData
+    {
+        public string someData;
+    }
+
+    [System.Serializable]
+    public class DataHolder
+    {
+        public StringData[] data;
+    }
+
     public class SQLDataLoader
     {
-        public void LoadStringData<T>(string tableName, Dictionary<T, List<string>> dataBase)
+        public void LoadStringData<T>(TextAsset textAsset, Dictionary<T, List<string>> dataBase)
         {
-            List<List<string>> dataLoaded = File.ReadAllLines(Application.persistentDataPath + tableName)
-                .Select(v => v.Split(',', '\"').ToList())
+            List<List<string>> dataLoaded = JsonUtility.FromJson<DataHolder>(textAsset.text).data
+                .Select(v => v.someData.Split(',', '\"').ToList())
                 .ToList();
             List<List<string>> dataSorted = new List<List<string>>();
             for (int i = 0; i < dataLoaded.Count; i++)

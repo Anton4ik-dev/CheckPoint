@@ -2,13 +2,12 @@ using Services;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace DataFactories
 {
     public class NameFactory
     {
-        private const string NAMES_DATABASE = "\\Names.csv";
-        private const string LASTNAMES_DATABASE = "\\LastNames.csv";
         private const string SPLIT = ", ";
         private Dictionary<int, List<string>> _names = new Dictionary<int, List<string>>
         {
@@ -23,10 +22,12 @@ namespace DataFactories
             {NameId.AFTER_NAME, new List<string>() }
         };
 
-        public NameFactory(SQLDataLoader sqlDataLoader)
+        public NameFactory(SQLDataLoader sqlDataLoader,
+            [Inject(Id = BindId.NAMES_ID)] TextAsset names,
+            [Inject(Id = BindId.SURNAMES_ID)] TextAsset surnames)
         {
-            sqlDataLoader.LoadStringData(NAMES_DATABASE, _names);
-            sqlDataLoader.LoadStringData(LASTNAMES_DATABASE, _lastNames);
+            sqlDataLoader.LoadStringData(names, _names);
+            sqlDataLoader.LoadStringData(surnames, _lastNames);
         }
 
         public string CreateName()
